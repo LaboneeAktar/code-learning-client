@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
-import logo from "../../../assets/images/logo1.jpg";
+import logo from "../../../assets/images/logo.png";
 
 const Header = () => {
   return (
     <div>
       <div className=" bg-cyan-300">
-        <div className="navbar px-20 py-5">
+        <div className="navbar lg:px-20 py-5">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -54,7 +54,7 @@ const Header = () => {
             <div>
               <img className="h-14 w-14 rounded-full" src={logo} alt="" />
             </div>
-            <h1 className="lg:text-4xl text-2xl pl-3">Code Learnig</h1>
+            <h1 className="lg:text-4xl text-xl pl-3">Code Learnig</h1>
           </div>
           <div className="navbar-center hidden lg:flex">
             <div className="header">

@@ -1,5 +1,5 @@
-/* .activeStyle { */
-/*   color: crimson;
+.activeStyle {
+  color: crimson;
 }
 
 .header a {
@@ -8,4 +8,4 @@
 }
 .header a:hover {
   color: crimson;
-} */
+}
