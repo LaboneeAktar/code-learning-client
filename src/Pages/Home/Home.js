@@ -40,8 +40,12 @@ const Home = () => {
               <div className="">
                 <div className="grid lg:grid-cols-3 gap-10 grid-cols-1">
                   {courses.map((course) => (
-                    <Link to={`/courses/${course.id}`} aria-label="View Item">
-                      <div key={course.id}>
+                    <Link
+                      key={course.id}
+                      to={`/courses/${course.id}`}
+                      aria-label="View Item"
+                    >
+                      <div>
                         <div className="w-60 border-2 border-slate-600 rounded-md">
                           <div className="relative overflow-hidden transition duration-200 transform rounded shadow-lg hover:-translate-y-2 hover:shadow-2xl">
                             <img
