@@ -28,7 +28,10 @@ const CourseDetails = () => {
         >
           {({ toPdf }) => (
             <button onClick={toPdf}>
-              <p className="text-xl mr-14 mt-2 tooltip" data-tip="Download Pdf">
+              <p
+                className="text-xl mr-14 mt-2 tooltip tooltip-bottom"
+                data-tip="Download Pdf"
+              >
                 <FaDownload />
               </p>
             </button>
