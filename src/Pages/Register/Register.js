@@ -20,16 +20,27 @@ const Register = () => {
 
     // console.log(name, photoURL, email, password, confirm);
 
+    //Password Validation for uppercase
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setError("Passowrd should be at least one uppercase letter.");
+      return;
+    }
+
+    //Password Validation for special character
     if (!/(?=.*[!@#$%^&*])/.test(password)) {
       setError("Passowrd should have one special character.");
       return;
     }
+
+    //Password Validation for length
     if (password < 6) {
       setError("Passowrd must be 6 character or more.");
       return;
     }
+
+    //check confirm password
     if (password !== confirm) {
-      setError("Don't Matched your Passoword");
+      setError("Don't matched your passoword. Please try again.");
       return;
     }
     setError("");
