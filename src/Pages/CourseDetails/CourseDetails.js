@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { FaCrown, FaDownload, FaEye, FaStar } from "react-icons/fa";
 import Pdf from "react-to-pdf";
 
@@ -12,7 +12,7 @@ const options = {
 
 const CourseDetails = () => {
   const course = useLoaderData();
-  const { image, title, description, rating, features, price } = course;
+  const { id, image, title, description, rating, features, price } = course;
   return (
     <div>
       <div className="flex mx-auto my-5 items-center justify-end">
@@ -65,10 +65,12 @@ const CourseDetails = () => {
               <FaEye className="mr-3" /> {rating.count} K
             </p>
             <p className="text-xl flex items-center"> $ {price}</p>
-            <button className="btn btn-info hover:btn-error text-lg">
-              <span className="mr-3"> Get Premium </span>
-              <FaCrown className="text-yellow-400 mr-3 text-lg" />
-            </button>
+            <Link to={`/courses/checkout/${id}`}>
+              <button className="btn btn-info hover:btn-error text-lg">
+                <span className="mr-3"> Get Premium </span>
+                <FaCrown className="text-yellow-400 mr-3 text-lg" />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

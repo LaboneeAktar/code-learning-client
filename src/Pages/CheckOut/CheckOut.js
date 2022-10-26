@@ -12,11 +12,11 @@ const CheckOut = () => {
   };
   return (
     <div>
-      <div className="card w-8/12 lg:card-side bg-salet-200 shadow-xl h-52 my-10 mx-auto">
+      <div className="card w-8/12 lg:card-side bg-slate-200 shadow-xl h-52 my-10 mx-auto">
         <figure>
           <img src={image} className="w-96 rounded-lg" alt="Album" />
         </figure>
-        <div className="card-body">
+        <div className="card-body ">
           <h2 className="card-title">{title}</h2>
           <p className="text-lg">This course price is - $ {price}.</p>
           <div className="card-actions justify-end">
