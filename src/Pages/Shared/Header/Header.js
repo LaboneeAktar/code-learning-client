@@ -109,7 +109,7 @@ const Header = () => {
                   Logout
                 </button>
                 <div
-                  className="w-10 rounded-full ml-3 tooltip"
+                  className="w-10 rounded-full ml-3 tooltip tooltip-bottom"
                   data-tip={user.displayName}
                 >
                   <img
@@ -132,19 +132,13 @@ const Header = () => {
                     Login
                   </button>
                 </Link>
-                <p className="tooltip" data-tip="User">
+                <p className="tooltip tooltip-bottom" data-tip="User">
                   <FaUser></FaUser>
                 </p>
               </>
             )}
 
             <div className="dropdown dropdown-end">
-              {/* <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img alt="..." src="https://placeimg.com/80/80/people" />
-                </div>
-              </label> */}
-
               <label className="swap swap-rotate lg:mt-2 lg:mx-4 ">
                 <input type="checkbox" />
 

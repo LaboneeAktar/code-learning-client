@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
@@ -13,6 +13,10 @@ const Register = () => {
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -59,6 +63,7 @@ const Register = () => {
           .catch((error) => console.error(error));
         form.reset();
         toast.success("Successfully Created Account");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -73,6 +78,7 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         toast.success("Welcome!! Login Successfull.");
+        navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
   };
@@ -84,6 +90,7 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         toast.success("Welcome!! Login Successfull.");
+        navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
   };

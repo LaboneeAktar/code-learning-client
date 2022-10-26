@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
@@ -12,6 +12,10 @@ const Login = () => {
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +30,7 @@ const Login = () => {
         console.log(user);
         form.reset();
         toast.success("Welcome!! Login Successfull");
+        navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
 
@@ -39,12 +44,13 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         toast.success("Welcome!! Login Successfull.");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
         setError(error.message);
       });
-      setError("")
+    setError("");
   };
 
   //login with github
@@ -54,10 +60,13 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         toast.success("Welcome!! Login Successfull.");
+        navigate(from, { replace: true });
       })
-      .catch((error) => {console.error(error)
-      setError(error.message)});
-      setError("")
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+    setError("");
   };
 
   return (
