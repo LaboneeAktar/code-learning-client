@@ -1,3 +1,4 @@
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -7,7 +8,11 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, providerLogin } =
+    useContext(AuthContext);
+
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -59,6 +64,28 @@ const Register = () => {
         console.error(error);
         setError(error.message);
       });
+  };
+
+  //login with google
+  const handleGoogleLogIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Welcome!! Login Successfull.");
+      })
+      .catch((error) => console.error(error));
+  };
+
+  //login with github
+  const handleGithubLogin = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Welcome!! Login Successfull.");
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -155,7 +182,7 @@ const Register = () => {
           </form>
           <div>
             <button
-              //   onClick={"handleGoogleLogIn"}
+              onClick={handleGoogleLogIn}
               type="submit"
               className="inline-flex items-center justify-center w-full h-12 px-6 mb-5 font-medium tracking-wide btn btn-outline btn-primary hover:btn-primary"
             >
@@ -163,7 +190,7 @@ const Register = () => {
             </button>
 
             <button
-              //   onClick={"handleGitLogin"}
+              onClick={handleGithubLogin}
               type="submit"
               className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide btn btn-outline  hover:btn-active"
             >

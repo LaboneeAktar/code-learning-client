@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import logo from "../../../assets/images/logo.png";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
   return (
     <div>
       <div className=" bg-cyan-300">
@@ -44,6 +47,10 @@ const Header = () => {
                 <li tabIndex={0}></li>
                 <li>
                   <NavLink to="/faq">FAQ</NavLink>
+                </li>
+                <li tabIndex={0}></li>
+                <li>
+                  <NavLink to="/register">Register</NavLink>
                 </li>
                 <li tabIndex={0}></li>
                 <li>
@@ -93,26 +100,50 @@ const Header = () => {
             </div>
           </div>
           <div className="navbar-end">
-            {/* <button
-                //   onClick={logOut}
+            {user && user.uid ? (
+              <>
+                <button
+                  onClick={logOut}
                   className="btn btn-outline btn-primary text-normal px-7 normal-case text-base hidden lg:block"
                 >
                   Logout
-                </button>{" "}
-              </div> */}
-
-            <Link to="/login">
-              <button className="btn btn-outline btn-primary text-normal mx-5 px-7  normal-case text-base hidden lg:block">
-                Login
-              </button>
-            </Link>
+                </button>
+                <div
+                  className="w-10 rounded-full ml-3 tooltip"
+                  data-tip={user.displayName}
+                >
+                  <img
+                    className="rounded-full h-10"
+                    alt="..."
+                    src={user.photoURL}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                {" "}
+                <Link to="/register">
+                  <button className="btn btn-outline btn-primary text-normal px-7 normal-case text-base hidden lg:block">
+                    Register
+                  </button>
+                </Link>
+                <Link to="/login">
+                  <button className="btn btn-outline btn-primary text-normal mx-3 px-7  normal-case text-base hidden lg:block">
+                    Login
+                  </button>
+                </Link>
+                <p className="tooltip" data-tip="User">
+                  <FaUser></FaUser>
+                </p>
+              </>
+            )}
 
             <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              {/* <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                   <img alt="..." src="https://placeimg.com/80/80/people" />
                 </div>
-              </label>
+              </label> */}
 
               <label className="swap swap-rotate lg:mt-2 lg:mx-4 ">
                 <input type="checkbox" />

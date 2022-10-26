@@ -1,11 +1,17 @@
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-  const { logIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const { logIn, providerLogin } = useContext(AuthContext);
+
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,6 +28,36 @@ const Login = () => {
         toast.success("Welcome!! Login Successfull");
       })
       .catch((error) => console.error(error));
+
+    setError("");
+  };
+
+  //login with google
+  const handleGoogleLogIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Welcome!! Login Successfull.");
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+      setError("")
+  };
+
+  //login with github
+  const handleGithubLogin = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Welcome!! Login Successfull.");
+      })
+      .catch((error) => {console.error(error)
+      setError(error.message)});
+      setError("")
   };
 
   return (
@@ -59,7 +95,7 @@ const Login = () => {
               />
             </div>
 
-            {/* <p className="text-red-700">{error}</p> */}
+            <p className="text-red-700">{error}</p>
 
             <div className="mt-4 mb-2 sm:mb-4">
               <button
@@ -80,13 +116,13 @@ const Login = () => {
           </form>
           <div>
             <button
-              //   onClick="{handleGoogleLogin}"
+              onClick={handleGoogleLogIn}
               className="inline-flex items-center justify-center w-full h-12 px-6 mb-5 font-medium tracking-wide btn btn-outline btn-primary hover:btn-primary"
             >
               <FaGoogle /> <span className="ml-3"> Login with Google</span>
             </button>
             <button
-              //   onClick={"handleGitLogin"}
+              onClick={handleGithubLogin}
               type="submit"
               className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide btn btn-outline  hover:btn-active"
             >
