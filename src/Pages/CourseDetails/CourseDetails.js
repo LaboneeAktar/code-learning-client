@@ -4,7 +4,7 @@ import { FaCrown, FaDownload, FaEye, FaStar } from "react-icons/fa";
 
 const CourseDetails = () => {
   const course = useLoaderData();
-  const { image, title, description, rating } = course;
+  const { image, title, description, rating, features, price } = course;
   return (
     <div>
       <div className="flex mx-auto my-5 items-center justify-end">
@@ -24,6 +24,15 @@ const CourseDetails = () => {
             <strong>Details: </strong>
             {description}
           </p>
+          <h2 className="text-xl font-bold">Some Features of {title}</h2>
+          <ul className="text-lg">
+            {features.map((feature, index) => (
+              <li key={index}>
+                {" "}
+                {index + 1 + "."} <span className="ml-2"> {feature}</span>
+              </li>
+            ))}
+          </ul>
           <div className="card-actions justify-end mt-5">
             <p className="text-xl flex items-center">
               <FaStar className="text-yellow-400 mr-3" /> {rating.rate}
@@ -31,6 +40,7 @@ const CourseDetails = () => {
             <p className="text-xl flex items-center">
               <FaEye className="mr-3" /> {rating.count} K
             </p>
+            <p className="text-xl flex items-center"> $ {price}</p>
             <button className="btn btn-info hover:btn-error text-lg">
               <span className="mr-3"> Get Premium </span>
               <FaCrown className="text-yellow-400 mr-3 text-lg" />

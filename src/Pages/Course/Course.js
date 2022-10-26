@@ -15,10 +15,7 @@ const Course = ({ course }) => {
             {" "}
             <strong>Details: </strong>
             {description.slice(0, 133) + "..."}{" "}
-            <Link className="text-blue-600" to={`/courses/${id}`}>
-              {" "}
-              <small>Read More</small>
-            </Link>
+            <small className="text-blue-600">Read More</small>
           </p>
         </div>
       </div>
