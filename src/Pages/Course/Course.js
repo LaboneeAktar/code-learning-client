@@ -15,7 +15,7 @@ const Course = ({ course }) => {
             {" "}
             <strong>Details: </strong>
             {description.slice(0, 133) + "..."}{" "}
-            <small className="text-blue-600">Read More</small>
+            <small className="text-blue-600 hover:underline">Read More</small>
           </p>
         </div>
       </div>

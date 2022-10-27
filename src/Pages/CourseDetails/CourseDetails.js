@@ -38,6 +38,7 @@ const CourseDetails = () => {
           )}
         </Pdf>
       </div>
+      <h1 className="text-2xl text-center">Course Details</h1>
       <div className="card w-8/12 h-full bg-slate-200 shadow-xl mx-auto my-10">
         <figure>
           <img className="w-full h-full p-5" src={image} alt="..." />
