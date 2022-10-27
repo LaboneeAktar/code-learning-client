@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import LeftSideNav from "../../LeftSideNav/LeftSideNav";
+// import LeftSideNav from "../LeftSideNav/LeftSideNav";
+import LeftSideNav from "../LeftSideNav/LeftSideNav";
 import Course from "../Course/Course";
 
 const Courses = () => {

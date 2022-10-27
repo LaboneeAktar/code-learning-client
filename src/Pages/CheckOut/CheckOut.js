@@ -15,8 +15,15 @@ const CheckOut = () => {
   };
   return (
     <div>
-      <h2 className="text-2xl text-center mt-8"> {user.displayName} </h2>
-      <h3 className="text-lg text-center">Email: {user.email}</h3>
+      {user?.email ? (
+        <>
+          {" "}
+          <h2 className="text-2xl text-center mt-8"> {user.displayName} </h2>
+          <h3 className="text-lg text-center">Email: {user.email}</h3>{" "}
+        </>
+      ) : (
+        <h2 className="text-2xl text-center mt-8"> {user.displayName} </h2>
+      )}
       <div className="card w-8/12 lg:card-side bg-slate-200 shadow-xl h-full my-10 mx-auto">
         <figure>
           <img src={image} className="w-96 h-full rounded-lg" alt="Album" />
