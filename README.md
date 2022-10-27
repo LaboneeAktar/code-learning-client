@@ -1,7 +1,16 @@
 # learn-coding-client
+
 ## Code Learning
 
-Live Website Link: [Code Learning](https://rainbow-dolphin-a91e4f.netlify.app/)
+Live Website Link: [Code Learning](https://learn-coding-419dc.web.app/)
+
+## Website Features
+
+- About Programming Languages
+- Contain 6 Courses
+- Some Blogs About Firebase, Node, Private Route
+- Frequently Ask Questions
+- Register/Login System
 
 ## Resourses & Credits
 

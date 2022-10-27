@@ -32,7 +32,10 @@ const Login = () => {
         toast.success("Welcome!! Login Successfull");
         navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
 
     setError("");
   };
