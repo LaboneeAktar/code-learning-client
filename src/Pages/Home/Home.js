@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import backgroundImage from "../../assets/images/background.jpg";
 import { FaArrowRight } from "react-icons/fa";
+import Skills from "../Skills/Skills";
 
 const Home = () => {
   const courses = useLoaderData();
@@ -68,6 +69,9 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-16">
+        <Skills />
       </div>
     </div>
   );
