@@ -61,7 +61,7 @@ const Header = () => {
             <div>
               <img className="h-14 w-14 rounded-full" src={logo} alt="" />
             </div>
-            <h1 className="lg:text-4xl text-xl pl-3">Code Learnig</h1>
+            <h1 className="lg:text-4xl text-xl pl-3">Code Learning</h1>
           </div>
           <div className="navbar-center hidden lg:flex">
             <div className="header">
